@@ -26,9 +26,9 @@ resource "aws_security_group" "ec2_public_security_group" {
   vpc_id      = "${data.terraform_remote_state.network_configuration.vpc_id}"
 
   ingress {
-    from_port   = 80
+    from_port   = 6443
     protocol    = "TCP"
-    to_port     = 80
+    to_port     = 6443
     cidr_blocks = ["0.0.0.0/0"]
   }
 
