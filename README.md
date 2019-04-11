@@ -1,20 +1,16 @@
 # K8S-Vagrant-Ansible
-Create a K8S virtual environment with Vagrant and Ansible
+Create a K8S virtual environment with Terraform and Ansible
 
 ## Requirements
-  - Vagrant (https://www.vagrantup.com/downloads.html)
-  - VirtualBox (https://www.virtualbox.org/wiki/Downloads)
+  - Terraform (in my PC WIN10)
+  - Ansible (I have EC2 instance with Ansible installed)
   
 ## Instructions
-  - Clone the git repo
-  - To start the environment - while in the local repo directory run: vagrant up
-  - To connect the the K8S master node - while in the local repo directory run: vagrant ssh master
-  - To destroy the environment - while in the local repo directory run: vagrant destroy
-  
-## Advanced Settings - Changing the K8S environment - servers.yml 
-  You can change the resulting k8s environment by updating the servers.yml file
-  ### Avilable parameters:
-  - host_name - change the name of a spesific host 
-  - ip_address - change the ip address of a spesific host
-  - cpus - change the number of CPU cores allocated to a spesific host
-  - ram - change the amount of allocated RAM to a spesific host
+  - create with terraform vpc and 3xec2 instances - run "Ops-my_terraform_1xVPC_3xEC2" dirctroy in this repo (befor run need to re-add       .tfvars file to infrastructure and inctances folder)
+  - sudo apt install python -y on the instances was created by terraform in the setp bebore(to aviod ansible playbook failure - need         install python 2.7 on minions nodes)
+  - Clone the git repo to my ansible server to /etc/ansible/
+  - cd /etc/ansible/K8S/K8S-Vagrant-Ansible-/
+  - ansible-playbook -i k8s_hosts install-docker.yml 
+  - ansible-playbook -i k8s_hosts k8s-common.yml
+  - ansible-playbook -i k8s_hosts -l masters k8s-master.yml 
+  - ansible-playbook -i k8s_hosts -l minions k8s-minion.yml
