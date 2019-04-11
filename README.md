@@ -14,3 +14,13 @@ Create a K8S virtual environment with Terraform and Ansible
   - ansible-playbook -i k8s_hosts k8s-common.yml
   - ansible-playbook -i k8s_hosts -l masters k8s-master.yml 
   - ansible-playbook -i k8s_hosts -l minions k8s-minion.yml
+  
+  - connect to via ssh k8s-master
+  - kubectl get nodes
+  - you should get the following output:
+
+  master     Ready    master   19h   v1.13.0
+
+  minion-1   Ready    <none>   18h   v1.13.0
+
+  minion-2   Ready    <none>   18h   v1.13.0
