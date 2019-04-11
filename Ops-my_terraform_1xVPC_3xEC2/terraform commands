@@ -1,0 +1,50 @@
+to run terraform on aws in first to do the follow:
+So first I install the AWS CLI.
+
+sudo yum install python-pip -y
+pip install --user  awscli
+Then we run aws configure.
+
+[markb@feddy demo.2] $ aws configure
+AWS Access Key ID [None]: ENTER-YOUR-ACCESS-KEY-HERE
+AWS Secret Access Key [None]: ENTER-YOUR-SECRET-KEY-HERE
+Default region name [None]: us-west-2
+Default output format [None]:
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+** deploy the infrastructruer:
+# run terraform command from the dir that the file exsit
+cd C:\Users\hezil\Desktop\OpsSchool\Terraform\terraform_porjects\vpc_and_ec2\infrastructure
+
+# create s3(via aws website) bucket called "terraform-remote-state-11.03.2019"
+
+# to set the backend with credential: link to the the source of this fix: link to the fix: https://serverfault.com/questions/918381/terraform-choosing-credentials-for-a-remote-state-file
+link2: https://github.com/hashicorp/terraform/issues/13589
+terraform init --backend-config="access_key="your access key"" --backend-config="secret_key=your secret key" -backend-config="infrastructure-prod.config"
+
+terraform plan -var-file="production.tfvars"
+
+terraform apply -var-file="production.tfvars"
+
+** now deploy the instanses:
+cd C:\Users\hezil\Desktop\OpsSchool\Terraform\terraform_porjects\vpc_and_ec2\instances
+
+terraform init --backend-config="access_key="your access key"" --backend-config="secret_key=your secret key" -backend-config="backend-prod.config"
+
+terraform plan -var-file="production.tfvars"
+
+terraform apply -var-file="production.tfvars"
+
+
+more links to useful credential shit:
+https://letslearndevops.com/2017/07/24/how-to-secure-terraform-credentials/
+https://www.runatlantis.io/docs/provider-credentials.html#aws
+https://blog.ndk.name/import-existing-aws-infrastructure-into-terraform/
+
+**Terraforming - Export existing AWS resources to Terraform style (tf, tfstate):
+https://github.com/dtan4/terraforming#export-tf
+
+
+**cat command in windows:
+type "file name"
