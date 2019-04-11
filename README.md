@@ -19,8 +19,8 @@ Create a K8S virtual environment with Terraform and Ansible
   - kubectl get nodes
   - you should get the following output:
 
-  master     Ready    master   19h   v1.13.0
+    master     Ready    master   19h   v1.13.0
 
-  minion-1   Ready    <none>   18h   v1.13.0
+    minion-1   Ready    <none>   18h   v1.13.0
 
-  minion-2   Ready    <none>   18h   v1.13.0
+    minion-2   Ready    <none>   18h   v1.13.0
