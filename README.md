@@ -6,7 +6,9 @@ Create a K8S virtual environment with Terraform and Ansible
   - Ansible (I have EC2 instance with Ansible installed)
   
 ## Instructions
-  - create with terraform vpc and 3xec2 instances - run "Ops-my_terraform_1xVPC_3xEC2" dirctroy in this repo (befor run need to re-add       .tfvars file to infrastructure and inctances folder)
+  - create with terraform vpc and 3xec2 instances - run "Ops-my_terraform_1xVPC_3xEC2" dirctroy in this repo 
+    1. befor run need to re-add .tfvars file to infrastructure and inctances folder
+    2. in the instances Security groups inbound rules we should allow TCP port 6443 forward to able communitcation for  K8S minions to            master (aleary part of terraform ec2 configution)
   - sudo apt install python -y on the instances was created by terraform in the setp bebore(to aviod ansible playbook failure - need         install python 2.7 on minions nodes)
   - Clone the git repo to my ansible server to /etc/ansible/
   - cd /etc/ansible/K8S/K8S-terraform-AWS-Ansible-/
