@@ -26,3 +26,6 @@ Create a K8S virtual environment with Terraform and Ansible
     minion-1   Ready    <none>   18h   v1.13.0
 
     minion-2   Ready    <none>   18h   v1.13.0
+
+
+NOTE: in k8s-master.yml i put --ignore-preflight-errors "NumCPU" becuase i'm use t2.micro with 1xCPU and kubernetes requirements is 2xCPUs
